@@ -1,6 +1,6 @@
 # Total Rehab admin
 
-The public admin interface for the Total Rehab app, built using
+The admin interface for the Total Rehab app, built using
 [Next.js](https://nextjs.org/docs) and [React Admin](https://marmelab.com/react-admin/),
 with a custom data provider that integrates with the Total Rehab API.
 
