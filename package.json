@@ -1,0 +1,68 @@
+{
+  "name": "total-rehab-admin",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "export": "next export",
+    "predev": "yarn prepare",
+    "prebuild": "yarn prepare",
+    "postinstall": "yarn oac https://api.total-rehab.co.uk/docs.json",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx,.json .",
+    "typecheck": "tsc --noEmit",
+    "prepare": "node ./bin/prepare.js"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "dependencies": {
+    "@jambff/oac": "^1.2.0",
+    "@jambff/ra-components": "^2.0.0",
+    "@jambff/ra-data-provider": "^1.2.1",
+    "@jambff/ra-supabase-next-auth": "^2.1.2",
+    "@jambff/supabase-auth-fetch": "^1.0.0",
+    "@supabase/supabase-js": "^2.4.0",
+    "@tanstack/react-query": "^4.26.1",
+    "change-case": "^4.1.2",
+    "chart.js": "^4.2.1",
+    "classnames": "^2.3.2",
+    "date-fns": "^2.29.3",
+    "next": "13.1.1",
+    "normalize.css": "^8.0.1",
+    "ra-input-rich-text": "^4.7.0",
+    "ra-supabase-media-library": "^1.0.1",
+    "react": "18.2.0",
+    "react-admin": "^4.7.0",
+    "react-chartjs-2": "^5.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@actions/core": "^1.10.0",
+    "@commitlint/config-conventional": "^8.3.4",
+    "@types/node": "18.11.18",
+    "@types/react": "18.0.26",
+    "@types/react-dom": "18.0.10",
+    "@typescript-eslint/eslint-plugin": "^5.22.0",
+    "@typescript-eslint/parser": "^5.22.0",
+    "app-root-path": "^3.1.0",
+    "commitlint": "^8.3.5",
+    "dotenv": "^16.0.3",
+    "eslint": "^8.2.0",
+    "eslint-config-airbnb": "19.0.4",
+    "eslint-config-next": "13.1.1",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-json": "^3.1.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "husky": "^4.2.5",
+    "prettier": "^2.8.1",
+    "typescript": "4.9.4"
+  }
+}
