@@ -9,7 +9,7 @@ import {
   PointElement,
   Tooltip,
 } from 'chart.js';
-import { totalRehabApi } from '../../../total-rehab-api';
+import { totalRehabApi } from '../../total-rehab-api';
 import { DashboardCountByDayLineChart } from './DashboardCountByDayLineChart';
 
 Chart.register(
