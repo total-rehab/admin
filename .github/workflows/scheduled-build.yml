@@ -1,6 +1,7 @@
 name: Scheduled Build
 
 on:
+  repository_dispatch: # For triggering rebuilds via webhooks
   workflow_dispatch:
   schedule:
     - cron: '0 0 * * *'
