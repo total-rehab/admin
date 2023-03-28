@@ -67,5 +67,6 @@ export const TaskInputs: FC<TaskInputsProps> = ({
           name: `Day ${i + 1}`,
         }))}
     />
+    <NumberInput fullWidth source="priority" min={1} validate={required()} />
   </>
 );

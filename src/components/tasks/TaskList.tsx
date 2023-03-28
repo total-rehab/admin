@@ -57,6 +57,7 @@ export const TaskList: FC = () => (
         textAlign="center"
         render={(record: RaRecord) => record.days.sort().join()}
       />
+      <NumberField source="priority" textAlign="center" />
       <EntityField
         source="programId"
         reference="programs"
