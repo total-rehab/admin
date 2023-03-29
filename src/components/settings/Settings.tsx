@@ -55,16 +55,19 @@ export const Settings: FC = () => {
   return (
     <SimpleForm record={settings} onSubmit={updateSettings}>
       <NumberInput
+        fullWidth
         validate={required()}
         source="freeDays"
         helperText="The number of days a user can complete before subscribing"
       />
       <NumberInput
+        fullWidth
         validate={required()}
         source="reviewDay"
         helperText="The day that a request to leave a review is shown"
       />
       <TextInput
+        fullWidth
         validate={required()}
         source="remindersMessage"
         helperText="The body of the scheduled reminder message"
