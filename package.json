@@ -12,7 +12,8 @@
     "postinstall": "yarn oac https://api.total-rehab.co.uk/docs.json",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx,.json .",
     "typecheck": "tsc --noEmit",
-    "prepare": "node ./bin/prepare.js"
+    "prepare": "node ./bin/prepare.js",
+    "apigen": "yarn oac https://api.total-rehab.co.uk/docs.json"
   },
   "husky": {
     "hooks": {

@@ -1,43 +1,69 @@
-import { useFormContext } from '@jambff/ra-components/dist/forms/FormProvider';
+import { ApiComponents } from '@jambff/oac';
 import { createAuthenticatedFetch } from '@jambff/supabase-auth-fetch';
-import { FC } from 'react';
+import { FC, useCallback, useEffect, useState } from 'react';
 import {
   NumberInput,
   required,
   SimpleForm,
-  useGetOne,
   useNotify,
   useUpdate,
 } from 'react-admin';
 import { FieldValues } from 'react-hook-form';
+import { createSupabaseClient } from '../../supabase';
+
+const supabase = createSupabaseClient();
+const fetch = createAuthenticatedFetch(supabase);
+const settingsEndpoint = new URL('/settings', process.env.API_BASE_URL).href;
 
 export const Settings: FC = () => {
-  const { data: settings } = useGetOne('settings', { id: '' });
+  const [settings, setSettings] = useState<ApiComponents['Settings']>();
   const [update] = useUpdate();
   const notify = useNotify();
 
-  const onSubmit = (newData: FieldValues) => {
-    update(
-      'settings',
-      { id: '', data: newData },
-      {
-        onSuccess: () => {
-          notify('Settings updated', { type: 'success' });
-        },
-        onError: (err) => {
-          console.error(err);
-          notify('Settings update failed', { type: 'error' });
-        },
-      },
-    );
-  };
+  const loadSettings = useCallback(async () => {
+    const res = await fetch(settingsEndpoint);
+
+    setSettings(await res.json());
+  }, []);
+
+  const updateSettings = useCallback(
+    async (newData: FieldValues) => {
+      try {
+        await fetch(settingsEndpoint, {
+          method: 'PUT',
+          body: JSON.stringify(newData),
+        });
+      } catch (err) {
+        console.error(err);
+        notify('Settings update failed', { type: 'error' });
+
+        return;
+      }
+
+      notify('Settings updated', { type: 'success' });
+    },
+    [notify],
+  );
+
+  useEffect(() => {
+    loadSettings();
+  }, [loadSettings]);
+
+  if (!settings) {
+    return null;
+  }
 
   return (
-    <SimpleForm record={settings} onSubmit={onSubmit}>
+    <SimpleForm record={settings} onSubmit={updateSettings}>
       <NumberInput
         validate={required()}
         source="freeDays"
         helperText="The number of days a user can complete before subscribing"
+      />
+      <NumberInput
+        validate={required()}
+        source="reviewDay"
+        helperText="The day that a request to leave a review is shown"
       />
     </SimpleForm>
   );
