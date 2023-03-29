@@ -5,8 +5,8 @@ import {
   NumberInput,
   required,
   SimpleForm,
+  TextInput,
   useNotify,
-  useUpdate,
 } from 'react-admin';
 import { FieldValues } from 'react-hook-form';
 import { createSupabaseClient } from '../../supabase';
@@ -17,7 +17,6 @@ const settingsEndpoint = new URL('/settings', process.env.API_BASE_URL).href;
 
 export const Settings: FC = () => {
   const [settings, setSettings] = useState<ApiComponents['Settings']>();
-  const [update] = useUpdate();
   const notify = useNotify();
 
   const loadSettings = useCallback(async () => {
@@ -64,6 +63,11 @@ export const Settings: FC = () => {
         validate={required()}
         source="reviewDay"
         helperText="The day that a request to leave a review is shown"
+      />
+      <TextInput
+        validate={required()}
+        source="remindersMessage"
+        helperText="The body of the scheduled reminder message"
       />
     </SimpleForm>
   );
