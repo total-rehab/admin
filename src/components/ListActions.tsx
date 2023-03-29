@@ -21,8 +21,6 @@ export const ListActions: FC<ListActionsProps> = ({
   const createPath = useCreatePath();
   const resource = useResourceContext();
 
-  console.log(createPath({ resource, type: 'edit' }));
-
   return (
     <TopToolbar>
       {hasFilters && <FilterButton />}

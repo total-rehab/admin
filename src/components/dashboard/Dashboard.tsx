@@ -25,8 +25,6 @@ export const Dashboard = () => {
   const { spacing } = useTheme();
   const { data } = useQuery(['analytics'], () => totalRehabApi.getAnalytics());
 
-  console.log(data);
-
   return (
     <Card sx={{ marginTop: spacing(2), marginBottom: spacing(8) }}>
       <CardHeader title="Total Rehab Dashboard" />

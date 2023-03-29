@@ -40,7 +40,6 @@ export const TaskInputs: FC<TaskInputsProps> = ({
       source="weekNumber"
       validate={required()}
       onChange={(evt) => {
-        console.log(evt);
         onWeekChange?.(evt.target.value);
       }}
     />

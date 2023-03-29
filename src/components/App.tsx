@@ -1,5 +1,11 @@
 import { FC } from 'react';
-import { Admin, CustomRoutes, Resource } from 'react-admin';
+import {
+  Admin,
+  CustomRoutes,
+  Menu,
+  Resource,
+  useRecordContext,
+} from 'react-admin';
 import { LoginPage, createAuthProvider } from '@jambff/ra-supabase-next-auth';
 import { Route } from 'react-router-dom';
 import FitnessCenter from '@mui/icons-material/FitnessCenter';
@@ -10,6 +16,7 @@ import Summarize from '@mui/icons-material/Summarize';
 import Image from '@mui/icons-material/Image';
 import QuestionMark from '@mui/icons-material/QuestionMark';
 import BorderColor from '@mui/icons-material/BorderColor';
+import SettingsIcon from '@mui/icons-material/Settings';
 import DateRange from '@mui/icons-material/DateRange';
 import People from '@mui/icons-material/People';
 import Category from '@mui/icons-material/Category';
@@ -55,6 +62,7 @@ import { BlogPostEdit } from './blog-posts/BlogPostEdit';
 import { PlanList } from './plans/PlanList';
 import { PlanCreate } from './plans/PlanCreate';
 import { PlanEdit } from './plans/PlanEdit';
+import { Settings } from './settings/Settings';
 
 type AppProps = {
   appEnv: 'staging' | 'production';
@@ -86,6 +94,21 @@ const authProvider = createAuthProvider(supabase, {
     };
   },
 });
+
+const MyMenu = () => {
+  const r = useRecordContext();
+
+  return (
+    <Menu>
+      <Menu />
+      <Menu.Item
+        to="/settings"
+        primaryText="Settings"
+        leftIcon={<SettingsIcon />}
+      />
+    </Menu>
+  );
+};
 
 const MEDIA_LIBRARY_BUCKET = 'images';
 const MEDIA_LIBRARY_BUCKET_FOLDER = 'public';
@@ -138,7 +161,8 @@ const App: FC<AppProps> = ({ appEnv }: AppProps) => (
         authProvider={authProvider}
         layout={Layout}
         dashboard={Dashboard}
-        loginPage={<LoginPage background={SECONDARY_COLOR} />}>
+        loginPage={<LoginPage background={SECONDARY_COLOR} />}
+        menu={MyMenu}>
         <Resource
           name="programs"
           list={ProgramList}
@@ -220,7 +244,8 @@ const App: FC<AppProps> = ({ appEnv }: AppProps) => (
           icon={People}
         />
         <CustomRoutes>
-          <Route path="bulk-create/tasks" element={<TaskBulkCreate />} />
+          <Route path="/bulk-create/tasks" element={<TaskBulkCreate />} />
+          <Route path="/settings" element={<Settings />} />
         </CustomRoutes>
       </Admin>
     </FormProvider>
