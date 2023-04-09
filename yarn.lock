@@ -4108,10 +4108,10 @@ ra-language-english@^4.7.0:
   dependencies:
     ra-core "^4.7.0"
 
-ra-supabase-media-library@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/ra-supabase-media-library/-/ra-supabase-media-library-1.0.2.tgz#9cec0e2cc8be82ce66a6048479a7f6370097e4be"
-  integrity sha512-oKfD1QIb+bwX83dcu12iRSipKnpSXQfeubrw/VjNdYyVrmPzjkKUrLMcluntd9vhPi8TtOqc8PLFpXfYQOE/cA==
+ra-supabase-media-library@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/ra-supabase-media-library/-/ra-supabase-media-library-1.0.3.tgz#097a853f5df1b9bc1876cbeedc920e7850da2d1f"
+  integrity sha512-98l0uIE+4WAIuQ4KLxLwOy8Q0LxZAhcxaRO5n8L9dIIVHfxkX9qDSr6dZ2qMEpiLpff0oQATc3aBsOWDoagANw==
   dependencies:
     browser-image-compression "^2.0.0"
     matcher "^5.0.0"
