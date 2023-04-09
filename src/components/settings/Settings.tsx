@@ -84,6 +84,7 @@ export const Settings: FC = () => {
           helperText="The body of the scheduled reminder message"
         />
         <EditorContent source="termsAndConditions" fullWidth />
+        <EditorContent source="privacyPolicy" fullWidth />
       </div>
     </SimpleForm>
   );
