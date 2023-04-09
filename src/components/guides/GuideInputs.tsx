@@ -21,6 +21,7 @@ export const GuideInputs: FC = () => {
     <>
       <TextInput source="title" validate={[required()]} fullWidth />
       <FlexRow>
+        <MediaLibraryInput source="videoId" label="Video" />
         <MediaLibraryInput source="heroImageId" label="Hero Image" />
         <MediaLibraryInput source="thumbnailImageId" label="Thumbnail Image" />
       </FlexRow>
