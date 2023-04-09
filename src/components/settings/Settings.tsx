@@ -34,6 +34,7 @@ export const Settings: FC = () => {
         await fetch(settingsEndpoint, {
           method: 'PUT',
           body: JSON.stringify(newData),
+          headers: { 'Content-Type': 'application/json' },
         });
       } catch (err) {
         console.error(err);
