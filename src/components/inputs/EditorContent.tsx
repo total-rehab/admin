@@ -1,6 +1,7 @@
 import {
   ClearButtons,
   FormatButtons,
+  LinkButtons,
   ListButtons,
   RichTextInput,
   RichTextInputProps,
@@ -24,6 +25,7 @@ export const EditorContent: FC<EditorContentProps> = (
           <FormatButtons />
           <ListButtons />
           <ClearButtons />
+          <LinkButtons />
         </RichTextInputToolbar>
       </div>
     }
