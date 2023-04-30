@@ -85,6 +85,7 @@ export const Settings: FC = () => {
         />
         <EditorContent source="termsAndConditions" fullWidth />
         <EditorContent source="privacyPolicy" fullWidth />
+        <EditorContent source="citations" fullWidth />
       </div>
     </SimpleForm>
   );
