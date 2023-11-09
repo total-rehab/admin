@@ -9,18 +9,34 @@ import {
   TextField,
   TextInput,
   useRefresh,
+  SelectInput,
+  BooleanInput,
 } from 'react-admin';
 import { ToastContainer, toast } from 'react-toastify';
 import { EntityField } from '../generic/EntityField';
 import 'react-toastify/dist/ReactToastify.css';
 import { ListActions } from '../ListActions';
 
+const filters = [
+  <SelectInput
+    alwaysOn
+    key="Active"
+    source="status"
+    choices={[
+      { id: 'Active', name: 'Active' },
+      { id: 'Used', name: 'Used' },
+      { id: 'Cancelled', name: 'Cancelled' },
+      { id: 'Terminated', name: 'Terminated' },
+    ]}
+  />,
+];
+
 export const DeepLinks: FC = () => {
   const refresh = useRefresh();
 
   const generateDeepLink = () => {
     const apiUrl =
-      'https://b8c8-119-155-9-148.ngrok-free.app/subscription/generateDeepLink';
+      'https://bc0b-119-155-29-70.ngrok-free.app/subscription/generateDeepLink';
     const headers = {
       'ngrok-skip-browser-warning': 'true',
     };
@@ -50,12 +66,13 @@ export const DeepLinks: FC = () => {
 
   return (
     <List
+      filters={filters}
       actions={
         <Button
           variant="contained"
           style={{ margin: '20px 20px 20px 20px' }}
           onClick={() => generateDeepLink()}>
-          Generate Deeplink
+          <span> Generate Deeplink </span>
         </Button>
       }
       perPage={25}>

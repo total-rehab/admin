@@ -80,7 +80,7 @@ const customHeaders = {
 };
 
 const dataProvider = createDataProvider(
-  'https://b8c8-119-155-9-148.ngrok-free.app',
+  'https://bc0b-119-155-29-70.ngrok-free.app',
   {
     fetch: (url, options) => fetch(url, { ...options, headers: customHeaders }),
   },
@@ -160,7 +160,7 @@ const App: FC<AppProps> = ({ appEnv }: AppProps) => (
     aspectRatio="3 / 2"
     sort={{
       field: 'createdAt',
-      order: 'desc',
+      order: 'DESC',
     }}
     resizeOptions={{
       maxSizeMB: 1,
@@ -171,7 +171,7 @@ const App: FC<AppProps> = ({ appEnv }: AppProps) => (
         basename="/admin"
         theme={theme}
         dataProvider={dataProvider}
-        // authProvider={authProvider}
+        authProvider={authProvider}
         layout={Layout}
         dashboard={Dashboard}
         loginPage={<LoginPage background={SECONDARY_COLOR} />}
