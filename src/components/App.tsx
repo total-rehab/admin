@@ -80,7 +80,7 @@ const customHeaders = {
 };
 
 const dataProvider = createDataProvider(
-  'https://bc0b-119-155-29-70.ngrok-free.app',
+  process.env.API_BASE_URL ?? 'https://bc0b-119-155-29-70.ngrok-free.app',
   {
     fetch: (url, options) => fetch(url, { ...options, headers: customHeaders }),
   },

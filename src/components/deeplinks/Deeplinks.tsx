@@ -36,6 +36,7 @@ export const DeepLinks: FC = () => {
 
   const generateDeepLink = () => {
     const apiUrl =
+      `${process.env.API_BASE_URL}/subscription/generateDeepLink` ??
       'https://bc0b-119-155-29-70.ngrok-free.app/subscription/generateDeepLink';
     const headers = {
       'ngrok-skip-browser-warning': 'true',
