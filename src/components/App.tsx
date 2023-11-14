@@ -1,3 +1,5 @@
+'use client';
+
 import { FC } from 'react';
 import {
   Admin,
@@ -18,17 +20,18 @@ import QuestionMark from '@mui/icons-material/QuestionMark';
 import BorderColor from '@mui/icons-material/BorderColor';
 import SettingsIcon from '@mui/icons-material/Settings';
 import DateRange from '@mui/icons-material/DateRange';
+import AddLinkIcon from '@mui/icons-material/AddLink';
 import People from '@mui/icons-material/People';
 import Category from '@mui/icons-material/Category';
 import { FormProvider } from '@jambff/ra-components';
 import { User } from '@supabase/supabase-js';
 import { createAuthenticatedFetch } from '@jambff/supabase-auth-fetch';
+import { sentenceCase } from 'change-case';
+import { MediaLibraryProvider } from 'ra-supabase-media-library';
 import {
   createDataProvider,
   isDataProviderError,
 } from '@jambff/ra-data-provider';
-import { sentenceCase } from 'change-case';
-import { MediaLibraryProvider } from 'ra-supabase-media-library';
 import { TaxonomyCreate } from './taxonomies/TaxonomyCreate';
 import { TaxonomyEdit } from './taxonomies/TaxonomyEdit';
 import { TaxonomyList } from './taxonomies/TaxonomyList';
@@ -63,6 +66,7 @@ import { PlanList } from './plans/PlanList';
 import { PlanCreate } from './plans/PlanCreate';
 import { PlanEdit } from './plans/PlanEdit';
 import { Settings } from './settings/Settings';
+import { DeepLinks } from './deeplinks/Deeplinks';
 
 type AppProps = {
   appEnv: 'staging' | 'production';
@@ -70,10 +74,19 @@ type AppProps = {
 
 const supabase = createSupabaseClient();
 const fetch = createAuthenticatedFetch(supabase);
+
+const customHeaders = {
+  'ngrok-skip-browser-warning': 'true',
+};
+
 const dataProvider = createDataProvider(
-  process.env.API_BASE_URL ?? 'http://localhost:7000',
-  { fetch },
+  process.env.API_BASE_URL ?? 'https://bc0b-119-155-29-70.ngrok-free.app',
+  {
+    fetch: (url, options) => fetch(url, { ...options, headers: customHeaders }),
+  },
 );
+
+console.log(dataProvider, 'DataProvider');
 
 const authProvider = createAuthProvider(supabase, {
   acceptedRoles: ['ADMIN'],
@@ -147,7 +160,7 @@ const App: FC<AppProps> = ({ appEnv }: AppProps) => (
     aspectRatio="3 / 2"
     sort={{
       field: 'createdAt',
-      order: 'desc',
+      order: 'DESC',
     }}
     resizeOptions={{
       maxSizeMB: 1,
@@ -163,6 +176,13 @@ const App: FC<AppProps> = ({ appEnv }: AppProps) => (
         dashboard={Dashboard}
         loginPage={<LoginPage background={SECONDARY_COLOR} />}
         menu={MyMenu}>
+        <Resource
+          name="subscription/getAllDeepLink"
+          options={{ label: 'Deep links' }}
+          list={DeepLinks}
+          icon={AddLinkIcon}
+        />
+        {/* {DeepLinks} */}
         <Resource
           name="programs"
           list={ProgramList}
@@ -243,6 +263,7 @@ const App: FC<AppProps> = ({ appEnv }: AppProps) => (
           create={UserCreate}
           icon={People}
         />
+
         <CustomRoutes>
           <Route path="/bulk-create/tasks" element={<TaskBulkCreate />} />
           <Route path="/settings" element={<Settings />} />

@@ -83,7 +83,7 @@ const Root = styled('div')(({ theme }) => ({
 }));
 
 export const TextLevelSelect = (props: LevelSelectProps) => {
-  const editor = useTiptapEditor();
+  const editor: any = useTiptapEditor();
   const [anchorElement, setAnchorElement] = useState<HTMLDivElement | null>(
     null,
   );

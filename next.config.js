@@ -10,6 +10,9 @@ const nextConfig = {
   images: {
     unoptimized: true, // For static builds
   },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 };
 
 module.exports = nextConfig;

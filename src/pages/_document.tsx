@@ -1,16 +1,20 @@
-import { NextPage } from 'next';
-import { Html, Head, Main, NextScript } from 'next/document';
+import Document, { Html, Head, Main, NextScript } from 'next/document';
+import React from 'react';
 
-export const Document: NextPage = () => (
-  <Html lang="en">
-    <Head>
-      <link rel="shortcut icon" href="/favicon.ico" />
-    </Head>
-    <body>
-      <Main />
-      <NextScript />
-    </body>
-  </Html>
-);
+class MyDocument extends Document {
+  render() {
+    return (
+      <Html lang="en">
+        <Head>
+          <link rel="shortcut icon" href="/favicon.ico" />
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    );
+  }
+}
 
-export default Document;
+export default MyDocument;

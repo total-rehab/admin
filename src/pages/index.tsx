@@ -1,5 +1,6 @@
 import type { GetStaticProps, NextPage } from 'next';
 import dynamic from 'next/dynamic';
+import React from 'react';
 
 type AdminPageProps = {
   appEnv: 'production' | 'staging';

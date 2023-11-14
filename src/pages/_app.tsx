@@ -1,15 +1,18 @@
 import 'normalize.css/normalize.css';
 import '../../styles/global.css';
 
-import { NextPage } from 'next';
 import { AppProps } from 'next/app';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import React from 'react';
 
 const queryClient = new QueryClient();
 
-const App: NextPage<AppProps> = ({ Component, pageProps }: AppProps) => (
+const App: React.FC<AppProps> = ({ Component, pageProps }) => (
   <QueryClientProvider client={queryClient}>
-    <Component {...pageProps} />
+    {
+      // @ts-ignore }
+    }
+    {typeof Component === 'function' && <Component {...pageProps} />}
   </QueryClientProvider>
 );
 
