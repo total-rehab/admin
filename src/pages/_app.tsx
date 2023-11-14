@@ -9,7 +9,10 @@ const queryClient = new QueryClient();
 
 const App: React.FC<AppProps> = ({ Component, pageProps }) => (
   <QueryClientProvider client={queryClient}>
-    <Component {...pageProps} />
+    {
+      // @ts-ignore }
+    }
+    {typeof Component === 'function' && <Component {...pageProps} />}
   </QueryClientProvider>
 );
 

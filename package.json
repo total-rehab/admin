@@ -10,7 +10,6 @@
     "predev": "yarn prepare",
     "prebuild": "yarn prepare",
     "postinstall": "yarn oac https://api.total-rehab.co.uk/docs.json",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx,.json .",
     "prepare": "node ./bin/prepare.js",
     "apigen": "yarn oac https://api.total-rehab.co.uk/docs.json"
   },
