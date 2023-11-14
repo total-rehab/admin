@@ -4,12 +4,14 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build ",
     "start": "next start",
     "export": "next export && touch ./out/.nojekyll",
     "predev": "yarn prepare",
     "prebuild": "yarn prepare",
     "postinstall": "yarn oac https://api.total-rehab.co.uk/docs.json",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx,.json .",
+    "typecheck": "tsc --noEmit",
     "prepare": "node ./bin/prepare.js",
     "apigen": "yarn oac https://api.total-rehab.co.uk/docs.json"
   },
