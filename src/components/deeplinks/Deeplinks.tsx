@@ -17,19 +17,19 @@ import { EntityField } from '../generic/EntityField';
 import 'react-toastify/dist/ReactToastify.css';
 import { ListActions } from '../ListActions';
 
-const filters = [
-  <SelectInput
-    alwaysOn
-    key="Active"
-    source="status"
-    choices={[
-      { id: 'Active', name: 'Active' },
-      { id: 'Used', name: 'Used' },
-      { id: 'Cancelled', name: 'Cancelled' },
-      { id: 'Terminated', name: 'Terminated' },
-    ]}
-  />,
-];
+// const filters = [
+//   <SelectInput
+//     alwaysOn
+//     key="Active"
+//     source="status"
+//     choices={[
+//       { id: 'Active', name: 'Active' },
+//       { id: 'Used', name: 'Used' },
+//       { id: 'Cancelled', name: 'Cancelled' },
+//       { id: 'Terminated', name: 'Terminated' },
+//     ]}
+//   />,
+// ];
 
 export const DeepLinks: FC = () => {
   const refresh = useRefresh();
@@ -67,7 +67,7 @@ export const DeepLinks: FC = () => {
 
   return (
     <List
-      filters={filters}
+      // filters={filters}
       actions={
         <Button
           variant="contained"
