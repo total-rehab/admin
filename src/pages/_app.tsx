@@ -7,12 +7,15 @@ import React from 'react';
 
 const queryClient = new QueryClient();
 
+class AwaitRenderStatus {}
+
+if (typeof window !== 'undefined') {
+  window.AwaitRenderStatus = AwaitRenderStatus;
+}
+
 const App: React.FC<AppProps> = ({ Component, pageProps }) => (
   <QueryClientProvider client={queryClient}>
-    {
-      // @ts-ignore }
-    }
-    {typeof Component === 'function' && <Component {...pageProps} />}
+    <Component {...pageProps} />
   </QueryClientProvider>
 );
 
