@@ -75,15 +75,9 @@ type AppProps = {
 const supabase = createSupabaseClient();
 const fetch = createAuthenticatedFetch(supabase);
 
-const customHeaders = {
-  'ngrok-skip-browser-warning': 'true',
-};
-
 const dataProvider = createDataProvider(
-  process.env.API_BASE_URL ?? 'https://bc0b-119-155-29-70.ngrok-free.app',
-  {
-    fetch: (url, options) => fetch(url, { ...options, headers: customHeaders }),
-  },
+  process.env.API_BASE_URL ?? 'http://localhost:7000',
+  { fetch },
 );
 
 console.log(dataProvider, 'DataProvider');
